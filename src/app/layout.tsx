@@ -5,6 +5,7 @@ import Script from "next/script";
 import Head from "next/head";
 import Header from "../component/headerSection/Header";
 import Footer from "../component/footer/Footer";
+import ProductRange from "../component/productRange/ProductRange";
 
 
 
@@ -57,6 +58,7 @@ export default function RootLayout({
         <body suppressHydrationWarning={true} style={{ backgroundColor: 'white' }} className={inter.className}>
           <Header />
           {children}
+          <ProductRange />
           <Footer />
         </body>
       </html>

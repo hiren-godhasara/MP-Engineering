@@ -2,9 +2,9 @@
 import Link from "next/link"
 import Image from 'next/image';
 import styles from './Footer.module.scss'
-import insta from '../../imageFolder/logo.png'
-import fb from '../../imageFolder/logo.png'
-import wp from '../../imageFolder/logo.png'
+import insta from '../../imageFolder/icons8-linkedin-60.png'
+import fb from '../../imageFolder/icons8-facebook-60.png'
+import wp from '../../imageFolder/icons8-whatsapp-60.png'
 import logo from "../../imageFolder/logo.png";
 const whatsappLink = 'https://wa.me/+919157059719';
 const webSiteLink = 'http://www.mydryfruit.com'
@@ -23,17 +23,14 @@ export default function Footer() {
                         <Image
                             src={logo}
                             alt='logo'
-                            fill={true}
-                            style={{ objectFit: "contain" }}
+                            objectFit="cover"
                             className={styles.head1}
                         />
                     </Link>
-                    <Link href='/' className={styles.p11}>
-                        MYDRYFRUIT
-                    </Link>
-                    <p className={styles.p1}>
+
+                    {/* <p className={styles.p1}>
                         <span className={styles.ps1}>BITSSHADOW LLP</span>
-                    </p>
+                    </p> */}
                     <p className={styles.p1} >
                         517-522 Meridian Business Center, Mota Varachha, Surat, Gujarat 394101
                     </p>
@@ -72,24 +69,20 @@ export default function Footer() {
                     </div>
                     <div className={styles.h1}>
                         <ul className={styles.ul}>
-                            <li>
-                                <Link href={"/cart"} className={styles.gray}>
-                                    Cart
-                                </Link>
-                            </li>
-                            {/* <li>
-                                <Link href={"/socialMedia"} className={styles.gray}>
-                                    Gallery
-                                </Link>
-                            </li> */}
                             <li className={styles.li}>
                                 <Link href={"/#products"} className={styles.gray}>
-                                    Products
+                                    Clients
                                 </Link>
                             </li>
                             <li>
+                                <Link href={"/cart"} className={styles.gray}>
+                                    Gallery
+                                </Link>
+                            </li>
+
+                            <li>
                                 <Link href={"/orderList"} className={styles.gray}>
-                                    Your Order
+                                    Brochure
                                 </Link>
                             </li>
                         </ul>
@@ -122,7 +115,7 @@ export default function Footer() {
             </div>
             <div className={styles.copy}>
                 <p className={styles.pcopy}>
-                    @{`${process.env.COPYRIGHT_YEAR}`} <Link className={styles.span} href={webSiteLink}>MYDRYFRUIT</Link> All Rights Reserved.
+                    @2024 <Link className={styles.span} href={webSiteLink}>MP ENGINEERING</Link> All Rights Reserved.
                 </p>
             </div>
         </footer >

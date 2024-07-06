@@ -3,10 +3,9 @@
 import React, { useState } from 'react';
 import styles from './ContactUs.module.scss';
 import Link from 'next/link';
-import { getToken } from '@/getLocalStroageToken';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import Image from 'next/image';
-import logo from '../../imageFolder/mdfLogo.png'
+import logo from '../../imageFolder/logo.png'
 
 
 const ContactUs = () => {
@@ -17,6 +16,7 @@ const ContactUs = () => {
         mobile: '',
         countryCode: '+91',
         message: '',
+        file: ''
     });
 
 
@@ -47,7 +47,6 @@ const ContactUs = () => {
         }
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-    const token = getToken()
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -72,7 +71,6 @@ const ContactUs = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
 
                 },
                 body: JSON.stringify(formData),
@@ -88,7 +86,9 @@ const ContactUs = () => {
                         email: '',
                         countryCode: '+91',
                         mobile: '',
-                        message: ''
+                        message: '',
+                        file: ''
+
                     });
                 } else {
                     const data = await response.json();
@@ -106,7 +106,8 @@ const ContactUs = () => {
             email: '',
             mobile: '',
             countryCode: '+91',
-            message: ''
+            message: '',
+            file: ''
         });
     }
 
@@ -162,6 +163,9 @@ const ContactUs = () => {
                                 </div>
 
                             </div>
+
+                            <label>Upload File:</label>
+                            <input type="file" id="file" name="file" value={formData.email} onChange={handleChange} required />
 
                             <label>Message:<span style={{ color: 'red' }}>*</span></label>
                             <textarea id="message" name="message" value={formData.message} onChange={handleChange} required></textarea>

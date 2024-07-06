@@ -1,5 +1,9 @@
 'use client'
 import headerCompanyLogo from '../../imageFolder/logo.png';
+import wp from '../../imageFolder/icons8-whatsapp-60.png';
+import fb from '../../imageFolder/icons8-facebook-60.png';
+import ln from '../../imageFolder/icons8-linkedin-60.png';
+
 import styles from './Header.module.scss';
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
@@ -11,212 +15,37 @@ import Loader from '../loader/Loader';
 
 const Header = () => {
 
-    const [apiCalled, setApiCalled] = useState(false);
-    const cartButtonRef = useRef<HTMLButtonElement>(null);
-    const [auth, setAuth] = useState(false)
-    const [mobileView, setMobileView] = useState(0)
-    const [searchValue, setSearchValue] = useState("")
-    const [products, setProducts] = useState<any>([])
+
     const [loading, setLoading] = useState(false)
     const [isMenuShown, setIsMenuShown] = useState(false)
-    const [productDetails, setProductDetails] = useState('');
-    const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
-    const [isUserDetailsModalOpen, setIsUserDetailsModalOpen] = useState(false);
-    const [isHeaderSticky, setIsHeaderSticky] = useState(false);
-    const router = useRouter()
-    const path = usePathname()
+    const [isProductsDropdownShown, setIsProductsDropdownShown] = useState(false);
 
-
-    const _user: any = typeof window !== 'undefined' ? localStorage.getItem('userData') : '';
-    const userDetails = _user ? JSON.parse(_user) : null;
-    const _userName = userDetails ? userDetails.firstName + ' ' + userDetails.lastName : "User Details"
-
-    useEffect(() => {
-        const hasApiBeenCalled = parseInt(sessionStorage.getItem('apiCalled') || '0');
-        if (!hasApiBeenCalled || (Date.now() - hasApiBeenCalled) > (1 * 60 * 60 * 1000)) {
-     
-            sessionStorage.setItem('apiCalled', Date.now().toString());
-            setApiCalled(true);
-        }
-    }, []);
-
-    let locationDetails: any = {}
-
-
-
-
-
-    const handleDocumentClick = (event: any) => {
-        if (cartButtonRef.current && !cartButtonRef.current.contains(event.target)) {
-            setIsCartDropdownOpen(false);
-        }
-    };
-
-    const handleCartButtonClickMobile = () => {
-        setMobileView(mobileView === 0 ? 1 : 0);
-    }
-
-    const handleCartButtonClick = () => {
-        setIsCartDropdownOpen(!isCartDropdownOpen);
-    }
-    const openUserDetailsModal = () => {
-        setIsUserDetailsModalOpen(true);
-        setMobileView(0);
-
-    };
     const handleDrawerOpen = () => {
         setIsMenuShown(true)
     }
-    const closeUserDetailsModal = () => {
-        setIsUserDetailsModalOpen(false);
-    };
-    const orderListClick = () => {
-        setMobileView(0);
-        router.push('/orderList')
-    }
-    const onLogoutBtn = () => {
-        
-    }
 
+    const handleProductsMouseEnter = () => {
+        setIsProductsDropdownShown(true);
+    };
+
+    const dropdownRef = useRef(null);
+    const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            setIsProductsDropdownShown(false);
+        }
+    };
 
     useEffect(() => {
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-            setIsHeaderSticky(scrollY > window.innerHeight * 0);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
+        document.addEventListener('mousedown', handleClickOutside);
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
-
-    const handleGoToCart = () => {
-        router.push('/cart')
-    }
-
-    const [searchDropdown, setSearchDropdown] = useState(false)
-    const onOpenSearchbar = () => {
-        setSearchDropdown(true)
-        if (products?.length === 0) {
-            prodData()
-        }
-    }
-
-    const handleInputChange = (e: any) => {
-        setSearchValue(e.target.value);
-    };
-
-    const clear = () => {
-        setSearchValue("");
-    }
-    const close = () => {
-        setSearchDropdown(false)
-    }
-
-    const prodData = async () => {
-        setLoading(true)
-        fetch(`${process.env.BASE_URL}/s/productList`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({}),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                setProducts(data.data.productData);
-                setLoading(false)
-            })
-            .catch(error => {
-                console.error('There was Link problem fetching the data:', error);
-            })
-    };
-    const filteredProducts = products.filter((product: any) =>
-        product.name.toLowerCase().includes(searchValue.toLowerCase())
-    );
-
-    const dropdownRef = useRef<any>(null);
-    const searchBarRef = useRef<any>(null);
-
-    useEffect(() => {
-        const handleOutsideClick = (event: any) => {
-            if (
-                dropdownRef.current &&
-                searchBarRef.current &&
-                !dropdownRef.current.contains(event.target) &&
-                !searchBarRef.current.contains(event.target)
-            ) {
-                setSearchDropdown(false);
-            }
-        };
-
-        document.addEventListener('mousedown', handleOutsideClick);
-
-        return () => {
-            document.removeEventListener('mousedown', handleOutsideClick);
-        };
-    }, []);
-
-    const highlightSearchTerm = (text: any, term: any) => {
-        const regex = new RegExp(`(${term})`, 'gi');
-        return text.split(regex).map((part: any, index: any) => (
-            part.toLowerCase() === term.toLowerCase()
-                ? <span key={index} className={styles.highlight}>{part}</span>
-                : part
-        ));
-    };
-
-    const onbtn = () => {
-        const location = window.location.href;
-        if (!location.endsWith("/login") && !location.endsWith("/registration")) {
-            localStorage.setItem("location", location);
-        }
-        setIsMenuShown(false)
-    }
-    const onbtn1 = () => {
-        const location = window.location.href;
-        if (!location.endsWith("/login") && !location.endsWith("/registration")) {
-            localStorage.setItem("location", location);
-        }
-    }
 
     return (
         <div className={styles.mainHeaderWrapper}>
-            <div className={`${styles.headerContainer} maxScreenWidth`}>
-                
-                <div className={styles.subContainer}>
-                    <p>JINESH</p>
-                    <p>VACHHANI</p>
-                    <p>JINESH</p>
-                    <p>VACHHANI</p>
-                </div>
-                
-                </div>
-
-
-
-
-
-
-
-
-
-
             <div className={styles.header}>
-
-
-
-
-
-
-<div className={styles.mediumScreenHeaderarea}>
+                <div className={styles.mediumScreenHeaderarea}>
                     <div style={{ cursor: 'pointer' }} onClick={() => handleDrawerOpen()}>
                         <svg style={{ marginLeft: '10px' }} height={30} width={25} viewBox="0 0 22 14" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21 7L1 7" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -224,24 +53,21 @@ const Header = () => {
                             <path d="M21 1L1 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </div>
-  <div className={styles.mediumScreenSectionOne} >
-                            <Image src={headerCompanyLogo} width={200} height={200} alt='Home Pagea' className={styles.image} />
-                        </div>
-                       
+                    <div className={styles.mediumScreenSectionOne} >
+                        <Image src={headerCompanyLogo} width={200} height={200} alt='Home Pagea' className={styles.image} />
+                    </div>
+
+                    <div>
+                        <Image src={wp} width={60} height={60} alt='Home Pagea' />
+                    </div>
+
                 </div>
-
-
-
-
-
-
-
                 {isMenuShown &&
                     <Drawer
                         className={styles.drawer}
                         open={isMenuShown}
                         closable={false}
-                        width={200}
+                        width={270}
                         placement='left'
                         onClose={() => setIsMenuShown(false)}
                         title={
@@ -259,21 +85,36 @@ const Header = () => {
                         <div className={styles.antDrawerBody}>
                             <ul className={styles.drawerMenuItems}>
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/">Home</Link></li>
-                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/#products">Products</Link></li>
-                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Combo</Link></li>
+                                <li>
+                                    <div className={styles.dropdownWrapper} onMouseEnter={handleProductsMouseEnter} ref={dropdownRef}>
+                                        <div className={styles.headerLink1} onClick={() => setIsMenuShown(false)}>
+                                            <p style={{ color: '#a71e22' }}>Products</p>
+                                            <p>🡣</p>
+                                        </div>
+                                        {isProductsDropdownShown && (
+                                            <div className={styles.dropdownMenu1}>
+                                                <Link className={styles.dropdownItem1} href="/products/a">Chemical Reactor</Link>
+                                                <Link className={styles.dropdownItem1} href="/products/b">Blenders</Link>
+                                                <Link className={styles.dropdownItem1} href="/products/c">Industrial Dryers</Link>
+                                                <Link className={styles.dropdownItem1} href="/products/d">S S Storage Tanks</Link>
+                                                <Link className={styles.dropdownItem1} href="/products/e">Herbal Extraction Plant</Link>
+                                            </div>
+                                        )}
+                                    </div>
+                                </li>
+
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/aboutUs">About Us</Link></li>
-                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/contactUs">Contact Us</Link></li>
-                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/returnPolicy"> Return Policy</Link></li>
-                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/privacyPolicy">Privacy Policy</Link></li>
-                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/shippingPolicy">Shipping Policy</Link></li>
-                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/termsOfUse">Terms & Conditions</Link></li>
+                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/contactUs">Gallery</Link></li>
+                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/returnPolicy"> Clients</Link></li>
+                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/privacyPolicy">Brochure</Link></li>
+                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/shippingPolicy">Contact Us</Link></li>
                             </ul>
                         </div>
 
                     </Drawer>
-                } 
+                }
 
-                <div className={`${styles.fullScreenHeader} maxScreenWidth`}>
+                <div className={`${styles.fullScreenHeader} `}>
                     <Link href={'/'} >
                         <div className={styles.leftSection}>
                             <Image src={headerCompanyLogo} width={240} height={170} alt='Home Pagea' />
@@ -281,21 +122,34 @@ const Header = () => {
                     </Link>
                     <div className={styles.headerLinkWrapper}>
                         <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/">Home</Link>
-                        <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#products">Products</Link>
-                        <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Combo</Link>
+                        <div className={styles.dropdownWrapper} onMouseEnter={handleProductsMouseEnter} ref={dropdownRef}>
+                            <div className={styles.headerLink} onClick={() => setIsMenuShown(false)}>Products</div>
+                            {isProductsDropdownShown && (
+                                <div className={styles.dropdownMenu}>
+                                    <Link className={styles.dropdownItem} href="/products/a">Chemical Reactor</Link>
+                                    <Link className={styles.dropdownItem} href="/products/b">Blenders</Link>
+                                    <Link className={styles.dropdownItem} href="/products/c">Industrial Dryers</Link>
+                                    <Link className={styles.dropdownItem} href="/products/d">S S Storage Tanks</Link>
+                                    <Link className={styles.dropdownItem} href="/products/e">Herbal Extraction Plant</Link>
+                                </div>
+                            )}
+                        </div>
                         <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/aboutUs">About Us</Link>
+                        <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Gallery</Link>
+                        <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Clients</Link>
+                        <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Brochure</Link>
                         <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/contactUs">Contact Us</Link>
                     </div>
-                    
-                    
                 </div>
-
-
-              
             </div>
         </div >
     )
 }
 
 export default Header;
+
+
+
+
+
 

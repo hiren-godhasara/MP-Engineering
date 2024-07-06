@@ -37,7 +37,7 @@
     right: 0;
     bottom: -90px;
     left: 0;
-    background-image: url('../../imageFolder/dryfruit-vector.png');
+    // background-image: url('../../imageFolder/dryfruit-vector.png');
     opacity: 0.1;
     background-size: cover;
     background-position: center;
@@ -60,7 +60,7 @@
 
 
 .h1 {
-    height: 100px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -234,35 +234,4 @@
         }
     }
 
-}
-
-
-.head::-moz-selection {
-    background-color: #FBD449;
-    color: #144950;
-}
-
-.head::selection {
-    background-color: #FBD449;
-    color: #144950;
-}
-
-.leftSection::-moz-selection {
-    background-color: #FBD449;
-    color: #144950;
-}
-
-.leftSection ::selection {
-    background-color: #FBD449;
-    color: #144950;
-}
-
-.contactForm::-moz-selection {
-    background-color: #FBD449;
-    color: #144950;
-}
-
-.contactForm ::selection {
-    background-color: #FBD449;
-    color: #144950;
 }

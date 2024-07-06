@@ -1,13 +1,10 @@
 import React from 'react';
-import ReturnPolicy from '../../component/GeneralPages/ReturnPolicy';
+import ContactUs from '../../component/GeneralPages/ContactUs';
 
 export default function Cart() {
     return (
         <div style={{ backgroundColor: 'white' }}>
-            <ReturnPolicy />
+            <ContactUs />
         </div>
     );
 }
-
-
-
