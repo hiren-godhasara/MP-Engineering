@@ -1,4 +1,6 @@
 .main {
+    width: 70%;
+    margin-left: 15%;
     padding-top: 100px;
 
     h1 {
@@ -7,19 +9,10 @@
         font-weight: 700;
         color: #a71e22;
         text-align: center;
+        margin-bottom: 20px;
     }
 }
 
-.info {
-    width: 96%;
-    margin-left: 2%;
-    margin-top: 40px;
-}
-
-.container {
-    display: flex;
-    gap: 40px;
-}
 
 .right {
     h2 {
@@ -41,12 +34,6 @@
     }
 }
 
-.img {
-    width: 50%;
-    height: 600px;
-
-}
-
 .h1 {
     text-align: center;
     font-size: clamp(14px, 5vw, 28px) !important;
@@ -56,112 +43,9 @@
     margin-bottom: 20px;
 }
 
-.table {
-    overflow-x: auto;
-}
-
-.table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.table th,
-.table td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-.table th {
-    background-color: #f2f2f2;
-}
-
-/* Responsive design for small screens */
-@media (max-width: 760px) {
-
-    .table table,
-    .table thead,
-    .table tbody,
-    .table th,
-    .table td,
-    .table tr {
-        display: block;
-    }
-
-    .table thead tr {
-        display: none;
-    }
-
-    .table tr {
-        margin-bottom: 10px;
-    }
-
-    .table td {
-        text-align: right;
-        padding-left: 50%;
-        position: relative;
-    }
-
-    .table td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 0;
-        width: 50%;
-        padding-left: 10px;
-        font-weight: bold;
-        text-align: left;
-    }
-}
-
-@media (max-width:500px) {
-    .table td {
-        height: 80px;
-    }
-}
-
-@media (max-width:1050px) {
-    .container {
-        display: inline-block;
-        gap: 40px;
-        margin-top: 20px;
-    }
-
-    .right {
-        margin-top: 20px;
-    }
-
+@media (max-width:760px) {
     .main {
-        h1 {
-            margin-bottom: -50px;
-        }
-    }
-
-    .left {
-        margin-top: -40px;
-    }
-
-    .img {
-        height: 400px;
         width: 100%;
+        margin-left: 0%;
     }
-
-    .table {
-        padding-top: 70px;
-    }
-}
-
-@media (max-width: 1400px) {
-    .img {
-        height: 500px;
-
-    }
-
-}
-
-@media (max-width:1200px) {
-    .img {
-        height: 400px;
-
-    }
-
 }

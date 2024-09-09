@@ -1,14 +1,10 @@
-
 import React from 'react';
-import PrivacyPolicy from '../../component/GeneralPages/PrivacyPolicy';
+import SubProducts from '../../component/subProducts/SubProducts';
 
 export default function Cart() {
     return (
         <div style={{ backgroundColor: 'white' }}>
-            <PrivacyPolicy />
+            <SubProducts />
         </div>
     );
 }
-
-
-

@@ -1,14 +1,10 @@
-
 import React from 'react';
-import PrivacyPolicy from '../../component/GeneralPages/PrivacyPolicy';
+import Reactor from '../../component/mainProducts/Reactor';
 
 export default function Cart() {
     return (
         <div style={{ backgroundColor: 'white' }}>
-            <PrivacyPolicy />
+            <Reactor />
         </div>
     );
 }
-
-
-

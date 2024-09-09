@@ -93,11 +93,10 @@ const Header = () => {
                                         </div>
                                         {isProductsDropdownShown && (
                                             <div className={styles.dropdownMenu1}>
-                                                <Link className={styles.dropdownItem1} href="/products/a">Chemical Reactor</Link>
-                                                <Link className={styles.dropdownItem1} href="/products/b">Blenders</Link>
-                                                <Link className={styles.dropdownItem1} href="/products/c">Industrial Dryers</Link>
-                                                <Link className={styles.dropdownItem1} href="/products/d">S S Storage Tanks</Link>
-                                                <Link className={styles.dropdownItem1} href="/products/e">Herbal Extraction Plant</Link>
+                                                <Link className={styles.dropdownItem1} href="/distillation-column">Distillation Column</Link>
+                                                <Link className={styles.dropdownItem1} href="/storage-tank">Storage Tank/Receiver</Link>
+                                                <Link className={styles.dropdownItem1} href="/heat-exchanger">Heat Exchanger/Condenser</Link>
+                                                <Link className={styles.dropdownItem1} href="/reactor">Reactor/Vessel</Link>
                                             </div>
                                         )}
                                     </div>
@@ -126,11 +125,10 @@ const Header = () => {
                             <div className={styles.headerLink} onClick={() => setIsMenuShown(false)}>Products</div>
                             {isProductsDropdownShown && (
                                 <div className={styles.dropdownMenu}>
-                                    <Link className={styles.dropdownItem} href="/products/a">Chemical Reactor</Link>
-                                    <Link className={styles.dropdownItem} href="/products/b">Blenders</Link>
-                                    <Link className={styles.dropdownItem} href="/products/c">Industrial Dryers</Link>
-                                    <Link className={styles.dropdownItem} href="/products/d">S S Storage Tanks</Link>
-                                    <Link className={styles.dropdownItem} href="/products/e">Herbal Extraction Plant</Link>
+                                    <Link className={styles.dropdownItem} href="/distillation-column">Distillation Column</Link>
+                                    <Link className={styles.dropdownItem} href="/storage-tank">Storage Tank/Receiver</Link>
+                                    <Link className={styles.dropdownItem} href="/heat-exchanger">Heat Exchanger/Condenser</Link>
+                                    <Link className={styles.dropdownItem} href="/reactor">Reactor/Vessel</Link>
                                 </div>
                             )}
                         </div>

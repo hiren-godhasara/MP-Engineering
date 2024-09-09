@@ -1,14 +1,10 @@
-
 import React from 'react';
-import PrivacyPolicy from '../../component/GeneralPages/PrivacyPolicy';
+import HeatExchnager from '../../component/mainProducts/HeatExchnager';
 
 export default function Cart() {
     return (
         <div style={{ backgroundColor: 'white' }}>
-            <PrivacyPolicy />
+            <HeatExchnager />
         </div>
     );
 }
-
-
-

@@ -1,35 +1,31 @@
-import YandexMetricaScript from "@/component/Yandex";
-import Head from "next/head";
+// import Head from "next/head";
 
-const information = require('../../data/details.json')
+// const information = require('../../data/details.json')
 
 
-export const metadata = {
-    title: information?.termsOfUse?.title,
-    description: information?.termsOfUse?.description,
-    keywords: information?.termsOfUse?.keywords,
-    openGraph: {
-        title: information?.termsOfUse?.ogTitle,
-        description: information?.termsOfUse?.ogDescription,
-        images: {
-            url: information?.termsOfUse?.ogImage,
-            height: 340,
-            width: 640,
-        },
-    },
-};
+// export const metadata = {
+//     title: information?.termsOfUse?.title,
+//     description: information?.termsOfUse?.description,
+//     keywords: information?.termsOfUse?.keywords,
+//     openGraph: {
+//         title: information?.termsOfUse?.ogTitle,
+//         description: information?.termsOfUse?.ogDescription,
+//         images: {
+//             url: information?.termsOfUse?.ogImage,
+//             height: 340,
+//             width: 640,
+//         },
+//     },
+// };
 
-export default function TermsOfUsesLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
-    return (
-        <>
-            <Head>
-                <YandexMetricaScript />
-            </Head>
-            {children}
-        </>
-    );
-}
+// export default function TermsOfUsesLayout({
+//     children,
+// }: Readonly<{
+//     children: React.ReactNode;
+// }>) {
+//     return (
+//         <>
+//             {children}
+//         </>
+//     );
+// }

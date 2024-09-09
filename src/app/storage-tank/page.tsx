@@ -1,14 +1,10 @@
-
 import React from 'react';
-import PrivacyPolicy from '../../component/GeneralPages/PrivacyPolicy';
+import StorageTank from '../../component/mainProducts/StorageTank';
 
 export default function Cart() {
     return (
         <div style={{ backgroundColor: 'white' }}>
-            <PrivacyPolicy />
+            <StorageTank />
         </div>
     );
 }
-
-
-

@@ -3,6 +3,8 @@
 import React from 'react';
 
 import styles from './AboutUs.module.scss';
+import MainProducts from '../mainProducts/DistillationColumn';
+import SubProducts from '../subProducts/SubProducts';
 
 
 
@@ -36,7 +38,6 @@ const AboutUs = () => {
 
 
             </div>
-
         </div>
     );
 };

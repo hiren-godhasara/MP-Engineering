@@ -58,7 +58,7 @@ export default function RootLayout({
         <body suppressHydrationWarning={true} style={{ backgroundColor: 'white' }} className={inter.className}>
           <Header />
           {children}
-          <ProductRange />
+          {/* <ProductRange /> */}
           <Footer />
         </body>
       </html>
