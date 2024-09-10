@@ -93,17 +93,17 @@ const Header = () => {
                                         </div>
                                         {isProductsDropdownShown && (
                                             <div className={styles.dropdownMenu1}>
-                                                <Link className={styles.dropdownItem1} href="/distillation-column">Distillation Column</Link>
-                                                <Link className={styles.dropdownItem1} href="/storage-tank">Storage Tank/Receiver</Link>
-                                                <Link className={styles.dropdownItem1} href="/heat-exchanger">Heat Exchanger/Condenser</Link>
-                                                <Link className={styles.dropdownItem1} href="/reactor">Reactor/Vessel</Link>
+                                                <Link className={styles.dropdownItem1} href="/distillation-column" onClick={() => { setIsProductsDropdownShown(false); setIsMenuShown(false) }}> <p>Distillation Column</p> </Link>
+                                                <Link className={styles.dropdownItem1} href="/storage-tank" onClick={() => { setIsProductsDropdownShown(false); setIsMenuShown(false) }}><p> Storage Tank/Receiver</p> </Link>
+                                                <Link className={styles.dropdownItem1} href="/heat-exchanger" onClick={() => { setIsProductsDropdownShown(false); setIsMenuShown(false) }}><p> Heat Exchanger/Condenser  </p></Link>
+                                                <Link className={styles.dropdownItem1} href="/reactor" onClick={() => { setIsProductsDropdownShown(false); setIsMenuShown(false) }}><p> Reactor/Vessel</p></Link>
                                             </div>
                                         )}
                                     </div>
                                 </li>
 
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/aboutUs">About Us</Link></li>
-                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/contactUs">Gallery</Link></li>
+                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/#gallery">Gallery</Link></li>
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/returnPolicy"> Clients</Link></li>
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/privacyPolicy">Brochure</Link></li>
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/shippingPolicy">Contact Us</Link></li>
@@ -125,15 +125,15 @@ const Header = () => {
                             <div className={styles.headerLink} onClick={() => setIsMenuShown(false)}>Products</div>
                             {isProductsDropdownShown && (
                                 <div className={styles.dropdownMenu}>
-                                    <Link className={styles.dropdownItem} href="/distillation-column">Distillation Column</Link>
-                                    <Link className={styles.dropdownItem} href="/storage-tank">Storage Tank/Receiver</Link>
-                                    <Link className={styles.dropdownItem} href="/heat-exchanger">Heat Exchanger/Condenser</Link>
-                                    <Link className={styles.dropdownItem} href="/reactor">Reactor/Vessel</Link>
+                                    <Link className={styles.dropdownItem} href="/distillation-column" onClick={() => setIsProductsDropdownShown(false)}>Distillation Column</Link>
+                                    <Link className={styles.dropdownItem} href="/storage-tank" onClick={() => setIsProductsDropdownShown(false)}>Storage Tank/Receiver</Link>
+                                    <Link className={styles.dropdownItem} href="/heat-exchanger" onClick={() => setIsProductsDropdownShown(false)}>Heat Exchanger/Condenser</Link>
+                                    <Link className={styles.dropdownItem} href="/reactor" onClick={() => setIsProductsDropdownShown(false)}>Reactor/Vessel</Link>
                                 </div>
                             )}
                         </div>
                         <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/aboutUs">About Us</Link>
-                        <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Gallery</Link>
+                        <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gallery">Gallery</Link>
                         <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Clients</Link>
                         <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Brochure</Link>
                         <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/contactUs">Contact Us</Link>

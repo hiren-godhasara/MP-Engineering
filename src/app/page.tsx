@@ -9,7 +9,9 @@ export default function Cart() {
         <div style={{ backgroundColor: 'white' }}>
             <HomePage />
             <Company />
-            <ImagePro />
+            <div id='gallery'>
+                <ImagePro />
+            </div>
         </div>
     );
 }

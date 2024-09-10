@@ -12,7 +12,6 @@ const SubProducts = () => {
                 <div className={styles.imgDiv}>
                     <Image src={image} alt='' className={styles.imgDiv1} />
                     <Image src={image} alt='' className={styles.imgDiv1} />
-                    <Image src={image} alt='' className={styles.imgDiv1} />
                 </div>
 
                 <div className={styles.right}>

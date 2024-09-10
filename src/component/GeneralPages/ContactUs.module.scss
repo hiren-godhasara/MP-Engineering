@@ -12,6 +12,7 @@
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+    color: #a71e22;
 }
 
 .contactContainer {
@@ -131,8 +132,12 @@
         width: 100%;
         margin-right: 20px;
         cursor: pointer;
-        color: #FBD449;
-        background-color: #144950;
+        color: #fff;
+        background-color: #a71e22;
+        // color: #676767;
+
+        // color: #a71e22;
+
         font-size: 18px;
         font-weight: 500;
         border: none;
@@ -142,9 +147,9 @@
     }
 
     button:hover {
-        color: #144950;
+        background-color: #676767;
         font-weight: 500;
-        background-color: #fbd449;
+        color: #fff;
     }
 }
 
