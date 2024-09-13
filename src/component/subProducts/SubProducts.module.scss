@@ -1,68 +1,79 @@
 .main {
-    width: 70%;
-    margin-left: 15%;
     padding-top: 100px;
+    padding-bottom: 100px;
 
     h1 {
-        text-align: center;
-        font-size: clamp(14px, 5vw, 28px) !important;
+        font-size: 34px;
         font-weight: 700;
-        color: #a71e22;
         text-align: center;
-        margin-bottom: 20px;
+        color: brown;
     }
 }
 
 .container {
+    width: 70%;
+    padding-top: 30px;
     display: flex;
-}
-
-.imgDiv {
-    width: 30% !important;
+    gap: 50px;
+    margin-left: 15%;
 }
 
 .right {
-    margin-left: 2%;
-    width: 68%;
+    text-align: justify;
 }
 
 .imgDiv1 {
-    margin-bottom: 30px;
+    width: 600px !important;
+    border-radius: 8px;
 }
 
 @media (max-width:1300px) {
-    .main {
-        width: 90%;
-        margin-left: 1%
-    }
+    .container {
+        width: 85%;
+        margin-left: 8.5%;
 
-    .imgDiv {
-        width: 40% !important;
-    }
-
-    .right {
-        margin-left: 2%;
-        width: 58%;
     }
 }
 
 @media (max-width:1024px) {
-    .main {
-        width: 98%;
-        margin-left: 1%
-    }
-}
-
-@media (max-width:700px) {
     .container {
-        display: block;
+        width: 95%;
+        margin-left: 2.5%;
+        flex-direction: column;
     }
 
     .imgDiv {
-        width: 100% !important;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: -20px;
+    }
+
+    .imgDiv1 {
+        width: 300px !important;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width:690px) {
+    .imgDiv1 {
+        width: 250px !important;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width:570px) {
+    .imgDiv {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-bottom: -40px;
+
+    }
+
+    .imgDiv1 {
+        width: 320px !important;
+        border-radius: 8px;
     }
 }

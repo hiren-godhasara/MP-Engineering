@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './MainProducts.module.scss'
-import image from '../../imageFolder/slide-2.jpg'
+import image from '../../imageFolder/Reactor Vessel.png'
 import Link from 'next/link';
 import { products } from '../../data/subProducts'
 

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './MainProducts.module.scss'
-import image from '../../imageFolder/1.png'
+import image from '../../imageFolder/Disrtillation Collumn.png'
 
 const DistillationColumn = () => {
     return (

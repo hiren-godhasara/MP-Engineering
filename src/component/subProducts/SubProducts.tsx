@@ -11,7 +11,10 @@ const SubProducts = ({ data }: any) => {
             <div className={styles.container}>
                 <div className={styles.imgDiv}>
                     {data.images.map((image, index) => (
-                        <Image key={index} src={image.imgSrc} alt={`image-${index}`} className={styles.imgDiv1} />
+                        <>
+                            <Image key={index} src={image.imgSrc} alt={`image-${index}`} className={styles.imgDiv1} />
+                            <br />
+                        </>
                     ))}
                 </div>
 
