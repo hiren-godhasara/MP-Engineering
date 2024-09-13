@@ -12,14 +12,33 @@ const Company = () => {
                 MP ENGINEERING
             </div>
             <p className={styles.subHead}>
-                MP ENGINEERING is specialized in chemical and pharma machinery manufacturing and process equipment manufacturing. It is located in high and new technology industrial development zone of Dahej. Our staffs constantly strive to become stronger after fifteen years of entrepreneurship. With excellent research team and experienced management personnel, our company constantly brings in talents and trains employees to be excellence.
+                M.P. ENGINEERING, situated in the heart of Gujarat's Vatva GIDC,
+                is dedicated to the precision design and manufacturing of top-tier
+                stainless steel and carbon steel equipment. Our expertise extends
+                to crafting Condensers, Receivers, Storage Tanks, Distillation
+                Columns, and Reactors of impeccable quality.
+            </p><br />
+            <p className={styles.subHead}>
+                With over 8 years of experience in the realm of process equipment
+                design and manufacturing, M.P. Engineering stands as a prominent
+                name in the field. Our company boasts an extensive portfolio of
+                process equipment, offering manufacturing and supply across a
+                broad spectrum.
+            </p><br />
+            <p className={styles.subHead}>
+                As an organization committed to growth and excellence, we
+                continuously harness new technologies, resulting in a remarkable
+                evolution in our performance and delivery capabilities. We take
+                pride in upholding the highest quality standards, fostering innovative
+                ideas, and responding promptly to the unique requirements of our
+                valued customers.
             </p>
-            <p className={styles.head}>Our Clients</p>
-            <ul style={{ listStyleType: 'disc' }}>
-                <li>Adiya Birla Chemicals</li>
-                <li>Gujarat Fluro Chemicals</li>
-                <li>Jubilant Foddworksd</li>
-                <li>Sun Pharma</li>
+            <p className={styles.head}>Our Products</p>
+            <ul style={{ listStyleType: 'disc', fontWeight: 700 }} >
+                <li >DISTILLATION COLUMN</li>
+                <li>STORAGE TANK / RECEIVER</li>
+                <li>HEAT EXCHANGER / CONDENSER</li>
+                <li>REACTOR / VESSEL</li>
             </ul>
         </div>
     );

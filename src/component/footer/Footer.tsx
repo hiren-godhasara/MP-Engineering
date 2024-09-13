@@ -79,12 +79,6 @@ export default function Footer() {
                                     Gallery
                                 </Link>
                             </li>
-
-                            <li>
-                                <Link href={"/orderList"} className={styles.gray}>
-                                    Brochure
-                                </Link>
-                            </li>
                         </ul>
                     </div>
                     <div className={styles.h1}>

@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useState } from 'react';
 import styles from './ContactUs.module.scss';
 import Link from 'next/link';
@@ -7,9 +6,7 @@ import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toas
 import Image from 'next/image';
 import logo from '../../imageFolder/logo.png'
 
-
 const ContactUs = () => {
-
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -19,15 +16,14 @@ const ContactUs = () => {
         file: ''
     });
 
-
     const handleCheckEmail: any = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const email = emailRegex.test(formData.email);
         if (email === false) {
             showErrorToast('Invalid email address');
-            return false
+            return false;
         }
-        return true
+        return true;
     }
 
     const handleCheckMobile: any = () => {
@@ -35,17 +31,48 @@ const ContactUs = () => {
         const mobile = mobileRegex.test(formData.mobile);
         if (mobile === false) {
             showErrorToast('Invalid mobile number');
-            return false
+            return false;
         }
-        return true
+        return true;
     }
 
     const handleChange = (e: any) => {
-        const { name, value } = e.target;
+        const { name, value, files } = e.target;
         if (name === 'mobile' && isNaN(value)) {
             return;
         }
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        if (name === 'file' && files.length > 0) {
+            handleFileUpload(files[0]);
+        } else {
+            setFormData({ ...formData, [name]: value });
+        }
+    };
+
+    const handleFileUpload = async (file: File) => {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            const response = await fetch(`${process.env.BASE_URL}/s/uploadFile`, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setFormData(prevFormData => ({
+                    ...prevFormData,
+                    file: data.fileUrl
+                }));
+                showSuccessToast("File uploaded successfully");
+            } else {
+                const data = await response.json();
+                showErrorToast(data.message);
+            }
+        } catch (error) {
+            console.error("Error uploading file:", error);
+            showErrorToast("File upload failed");
+        }
     };
 
     const handleSubmit = async (e: any) => {
@@ -57,9 +84,10 @@ const ContactUs = () => {
             formData.countryCode.trim() === '' ||
             formData.message.trim() === ''
         ) {
-            showErrorToast("Fill all mandetory field")
+            showErrorToast("Fill all mandatory fields");
             return;
         }
+
         try {
             if (!handleCheckEmail()) {
                 return;
@@ -67,51 +95,34 @@ const ContactUs = () => {
             if (!handleCheckMobile()) {
                 return;
             }
+
             const response = await fetch(`${process.env.BASE_URL}/s/contactUs`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-
                 },
                 body: JSON.stringify(formData),
-
             });
 
-            if (response) {
-                if (response.ok) {
-                    const data = await response.json();
-                    showSuccessToast(data.message)
-                    setFormData({
-                        name: '',
-                        email: '',
-                        countryCode: '+91',
-                        mobile: '',
-                        message: '',
-                        file: ''
-
-                    });
-                } else {
-                    const data = await response.json();
-                    showErrorToast(data.message)
-                }
+            if (response.ok) {
+                const data = await response.json();
+                showSuccessToast(data.message);
+                setFormData({
+                    name: '',
+                    email: '',
+                    countryCode: '+91',
+                    mobile: '',
+                    message: '',
+                    file: ''
+                });
+            } else {
+                const data = await response.json();
+                showErrorToast(data.message);
             }
         } catch (error) {
             console.error('Error during form submission:', error);
         }
     };
-
-    const handleCancel = () => {
-        setFormData({
-            name: '',
-            email: '',
-            mobile: '',
-            countryCode: '+91',
-            message: '',
-            file: ''
-        });
-    }
-
-
 
     return (
         <div className={styles.backImg}>
@@ -134,7 +145,6 @@ const ContactUs = () => {
                             <label>Email:<span style={{ color: 'red' }}>*</span></label>
                             <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
 
-
                             <div className={styles.div}>
                                 <label>Phone Number: <span style={{ color: 'red' }}>*</span></label>
                                 <div className={styles.num}>
@@ -144,11 +154,9 @@ const ContactUs = () => {
                                         type="tel"
                                         name="countryCode"
                                         value={`+${formData.countryCode.slice(1, 3)}`}
-                                        // onChange={handleChange}
                                         readOnly
                                         required
                                     />
-
                                     <input
                                         type="tel"
                                         name="mobile"
@@ -158,14 +166,11 @@ const ContactUs = () => {
                                         maxLength={10}
                                         required
                                     />
-
-
                                 </div>
-
                             </div>
 
                             <label>Upload File:</label>
-                            <input type="file" id="file" name="file" value={formData.email} onChange={handleChange} required />
+                            <input type="file" id="file" name="file" onChange={handleChange} />
 
                             <label>Message:<span style={{ color: 'red' }}>*</span></label>
                             <textarea id="message" name="message" value={formData.message} onChange={handleChange} required></textarea>
@@ -179,7 +184,6 @@ const ContactUs = () => {
                 <ToastNotifications />
             </div>
         </div>
-
     );
 };
 
