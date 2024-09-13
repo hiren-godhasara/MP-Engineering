@@ -1,25 +1,27 @@
+'use-client'
 import Image from 'next/image';
 import styles from './SubProducts.module.scss'
 import image from '../../imageFolder/r2.webp'
-import Link from 'next/link';
-import MainProducts from '../mainProducts/DistillationColumn';
 
-const SubProducts = () => {
+const SubProducts = ({ data }: any) => {
+
     return (
         <div className={styles.main}>
-            <h1>Glasslined Reactor</h1>
+            <h1>{data.title}</h1>
             <div className={styles.container}>
                 <div className={styles.imgDiv}>
-                    <Image src={image} alt='' className={styles.imgDiv1} />
-                    <Image src={image} alt='' className={styles.imgDiv1} />
+                    {data.images.map((image, index) => (
+                        <Image key={index} src={image.imgSrc} alt={`image-${index}`} className={styles.imgDiv1} />
+                    ))}
                 </div>
 
                 <div className={styles.right}>
-                    <p>Chemical Reactor is a vessel designed to contain chemical reactions. It is a type of reaction vessel that is designed to control temperature and pressure. The design of a chemical reactor is determined by many factors including the chemical reaction taking place, the type of reactor, the nature of the reactants, and the desired reaction conditions.</p><br />
-                    <p>Chemical Reactor is a vessel designed to contain chemical reactions. It is a type of reaction vessel that is designed to control temperature and pressure. The design of a chemical reactor is determined by many factors including the chemical reaction taking place, the type of reactor, the nature of the reactants, and the desired reaction conditions.</p><br />
-                    <p>Chemical Reactor is a vessel designed to contain chemical reactions. It is a type of reaction vessel that is designed to control temperature and pressure. The design of a chemical reactor is determined by many factors including the chemical reaction taking place, the type of reactor, the nature of the reactants, and the desired reaction conditions.</p><br />
-                    <p>Chemical Reactor is a vessel designed to contain chemical reactions. It is a type of reaction vessel that is designed to control temperature and pressure. The design of a chemical reactor is determined by many factors including the chemical reaction taking place, the type of reactor, the nature of the reactants, and the desired reaction conditions.</p><br />
-                    <p>Chemical Reactor is a vessel designed to contain chemical reactions. It is a type of reaction vessel that is designed to control temperature and pressure. The design of a chemical reactor is determined by many factors including the chemical reaction taking place, the type of reactor, the nature of the reactants, and the desired reaction conditions.</p><br />
+                    {data.description.map((desc, index) => (
+                        <>
+                            <p key={index}>{desc.para}</p>
+                            <br />
+                        </>
+                    ))}
                 </div>
             </div>
         </div>

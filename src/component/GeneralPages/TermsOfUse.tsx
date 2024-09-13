@@ -1,4 +1,3 @@
-'use client'
 import styles from './TermsOfUse.module.scss';
 
 const TermsOfUse: React.FC = () => {

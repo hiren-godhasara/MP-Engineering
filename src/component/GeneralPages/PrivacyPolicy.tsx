@@ -1,4 +1,3 @@
-'use client'
 import styles from './PrivacyPolicy.module.scss';
 
 const PrivacyPolicy: React.FC = () => {
