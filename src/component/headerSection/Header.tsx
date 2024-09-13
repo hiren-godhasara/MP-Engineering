@@ -104,7 +104,7 @@ const Header = () => {
 
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/aboutUs">About Us</Link></li>
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/#gallery">Gallery</Link></li>
-                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/returnPolicy"> Clients</Link></li>
+                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/clients"> Clients</Link></li>
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/privacyPolicy">Brochure</Link></li>
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/shippingPolicy">Contact Us</Link></li>
                             </ul>
@@ -134,7 +134,7 @@ const Header = () => {
                         </div>
                         <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/aboutUs">About Us</Link>
                         <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gallery">Gallery</Link>
-                        <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Clients</Link>
+                        <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/clients">Clients</Link>
                         <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Brochure</Link>
                         <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/contactUs">Contact Us</Link>
                     </div>

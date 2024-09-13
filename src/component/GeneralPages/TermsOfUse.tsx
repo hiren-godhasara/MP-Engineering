@@ -60,7 +60,7 @@ const TermsOfUse: React.FC = () => {
                 </div>
 
                 <div className={styles.details1}>
-                    <div className={styles.strong}>Thank you for choosing MyDryFruit.com! Happy shopping!</div>
+                    <div className={styles.strong}>Thank you for choosing MP Engineering!!</div>
                 </div>
 
             </div>

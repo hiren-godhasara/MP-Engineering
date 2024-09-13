@@ -70,7 +70,7 @@ export default function Footer() {
                     <div className={styles.h1}>
                         <ul className={styles.ul}>
                             <li className={styles.li}>
-                                <Link href={"/#products"} className={styles.gray}>
+                                <Link href={"/clients"} className={styles.gray}>
                                     Clients
                                 </Link>
                             </li>
