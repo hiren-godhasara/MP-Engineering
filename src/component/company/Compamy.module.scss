@@ -33,6 +33,11 @@
     text-align: justify;
 }
 
+.li:hover {
+    color: #a71e22;
+    font-weight: 700;
+}
+
 @media (max-width:1000px) {
     .aboutContainer {
         width: 90%;

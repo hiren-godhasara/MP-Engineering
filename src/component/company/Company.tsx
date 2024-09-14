@@ -35,10 +35,10 @@ const Company = () => {
             </p>
             <p className={styles.head}>Our Products</p>
             <ul style={{ listStyleType: 'disc', fontWeight: 700 }} >
-                <li >DISTILLATION COLUMN</li>
-                <li>STORAGE TANK / RECEIVER</li>
-                <li>HEAT EXCHANGER / CONDENSER</li>
-                <li>REACTOR / VESSEL</li>
+                <li className={styles.li}><a href="/distillation-column">DISTILLATION COLUMN</a> </li>
+                <li className={styles.li}><a href="/storage-tank">STORAGE TANK / RECEIVER</a> </li>
+                <li className={styles.li}><a href="/heat-exchanger">HEAT EXCHANGER / CONDENSER</a> </li>
+                <li className={styles.li}><a href="/reactor">REACTOR / VESSEL</a> </li>
             </ul>
         </div>
     );
