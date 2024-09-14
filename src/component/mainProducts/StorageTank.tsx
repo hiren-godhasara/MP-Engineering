@@ -8,7 +8,7 @@ import { products } from '../../data/subProducts'
 const StorageTank = () => {
     return (
         <div className={styles.main}>
-            <h1>StorageTank</h1>
+            <h1>Stroage Tank / Receiver</h1>
 
             <div className={styles.info}>
                 <div className={styles.container}>
@@ -17,9 +17,14 @@ const StorageTank = () => {
                         alt=''
                     />
                     <div className={styles.right}>
-                        <h2>Chemical Reactor</h2><br />
-                        <p>Chemical Reactor is a vessel designed to contain chemical reactions. It is a type of reaction vessel that is designed to control temperature and pressure. The design of a chemical reactor is determined by many factors including the chemical reaction taking place, the type of reactor, the nature of the reactants, and the desired reaction conditions.</p><br />
-                        <h2>Types of Chemical Reactor</h2>
+                        <h2>Stroage Tank / Receiver</h2><br />
+                        <p>We are manufacturing different type of storage like
+                            round tank, square tank, rectangular tank etc. It is
+                            widely use in chemicals, pharmaceuticals, pesticide,
+                            dairy, dyes & intermediates industries for storage water,
+                            hazardous chemical, mineral oils, acids etc. It is built
+                            from mild steel & stainless steel materials.</p><br />
+                        <h2>Types of Stroage Tank / Receiver</h2>
                         <ol style={{ listStyle: 'decimal', marginLeft: '20px' }}>
                             {
                                 products.map((product, index) => {
@@ -36,7 +41,6 @@ const StorageTank = () => {
                                 })
                             }
                         </ol><br />
-                        <p>Chemical Reactor is a vessel designed to contain chemical reactions. It is a type of reaction vessel that is designed to control temperature and pressure. The design of a chemical reactor is determined by many factors including the chemical reaction taking place, the type of reactor, the nature of the reactants, and the desired reaction conditions.</p><br />
                     </div>
                 </div>
             </div>

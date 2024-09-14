@@ -8,7 +8,7 @@ import { products } from '../../data/subProducts'
 const Reactor = () => {
     return (
         <div className={styles.main}>
-            <h1>Chemical Reactor</h1>
+            <h1>Reactor / Vessel</h1>
 
             <div className={styles.info}>
                 <div className={styles.container}>
@@ -17,8 +17,14 @@ const Reactor = () => {
                         alt=''
                     />
                     <div className={styles.right}>
-                        <h2>Chemical Reactor</h2><br />
-                        <p>Chemical Reactor is a vessel designed to contain chemical reactions. It is a type of reaction vessel that is designed to control temperature and pressure. The design of a chemical reactor is determined by many factors including the chemical reaction taking place, the type of reactor, the nature of the reactants, and the desired reaction conditions.</p><br />
+                        <h2>Reactor / Vessel</h2><br />
+                        <p>We are manufacturing different type of reactor /
+                            pressure vessel as per Client Requirement. It is widely
+                            use in chemicals, pharmaceuticals, petrochemical,
+                            fertilizer plant & pesticide industries. It is built from
+                            mild steel & stainless steel materials.</p><br />
+                        <h2>Capacity - 0.5 KL to 10 KL</h2>
+                        <h2>Pressure - Atm. to 15 KG/CM2G</h2><br />
                         <h2>Types of Chemical Reactor</h2>
                         <ol style={{ listStyle: 'decimal', marginLeft: '20px' }}>
                             {
@@ -36,7 +42,6 @@ const Reactor = () => {
                                 })
                             }
                         </ol><br />
-                        <p>Chemical Reactor is a vessel designed to contain chemical reactions. It is a type of reaction vessel that is designed to control temperature and pressure. The design of a chemical reactor is determined by many factors including the chemical reaction taking place, the type of reactor, the nature of the reactants, and the desired reaction conditions.</p><br />
                     </div>
                 </div>
             </div>

@@ -11,9 +11,8 @@ const ContactUs = () => {
         name: '',
         email: '',
         mobile: '',
-        countryCode: '+91',
         message: '',
-        file: ''
+        file: null
     });
 
     const handleCheckEmail: any = () => {
@@ -35,73 +34,79 @@ const ContactUs = () => {
         }
         return true;
     }
-
+    const [file, setFile] = useState<File | null>(null);
     const handleChange = (e: any) => {
         const { name, value, files } = e.target;
         if (name === 'mobile' && isNaN(value)) {
             return;
         }
         if (name === 'file' && files.length > 0) {
-            handleFileUpload(files[0]);
+            setFile(files[0]); // Store the file for separate upload
         } else {
             setFormData({ ...formData, [name]: value });
         }
     };
+    const handleFileUpload = async () => {
+        if (!file) return;
 
-    const handleFileUpload = async (file: File) => {
-        const formData = new FormData();
-        formData.append('file', file);
+        const uploadData = new FormData();
+        uploadData.append('file', file);
 
         try {
-            const response = await fetch(`${process.env.BASE_URL}/s/uploadFile`, {
+            const response = await fetch(`http://localhost:3333/api/v1/contactUs/file-upload`, {
                 method: 'POST',
-                body: formData
+                body: uploadData
             });
 
             if (response.ok) {
                 const data = await response.json();
-                setFormData(prevFormData => ({
-                    ...prevFormData,
-                    file: data.fileUrl
-                }));
-                showSuccessToast("File uploaded successfully");
+                return data.data[0]; // Return the file URL after upload
             } else {
                 const data = await response.json();
                 showErrorToast(data.message);
             }
         } catch (error) {
-            console.error("Error uploading file:", error);
+            console.error('File upload failed:', error);
             showErrorToast("File upload failed");
         }
+        return null;
     };
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+
         if (
             formData.name.trim() === '' ||
             formData.email.trim() === '' ||
             formData.mobile.trim() === '' ||
-            formData.countryCode.trim() === '' ||
             formData.message.trim() === ''
         ) {
             showErrorToast("Fill all mandatory fields");
             return;
         }
 
-        try {
-            if (!handleCheckEmail()) {
-                return;
-            }
-            if (!handleCheckMobile()) {
-                return;
-            }
+        if (!handleCheckEmail() || !handleCheckMobile()) {
+            return;
+        }
 
-            const response = await fetch(`${process.env.BASE_URL}/s/contactUs`, {
+        let fileUrl = formData.file;
+
+        // If a file is selected, upload it first
+        if (file) {
+            fileUrl = await handleFileUpload(); // Upload file and get the URL
+            if (!fileUrl) return; // Stop submission if the file upload fails
+        }
+
+        try {
+            // Include the file URL in formData before sending
+            const finalFormData = { ...formData, file: fileUrl };
+
+            const response = await fetch(`http://localhost:3333/api/v1/contactUs/inquiry`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(finalFormData),
             });
 
             if (response.ok) {
@@ -110,17 +115,18 @@ const ContactUs = () => {
                 setFormData({
                     name: '',
                     email: '',
-                    countryCode: '+91',
                     mobile: '',
                     message: '',
                     file: ''
                 });
+                setFile(null); // Reset the file input
             } else {
                 const data = await response.json();
                 showErrorToast(data.message);
             }
         } catch (error) {
             console.error('Error during form submission:', error);
+            showErrorToast('Form submission failed');
         }
     };
 
@@ -153,7 +159,7 @@ const ContactUs = () => {
                                         maxLength={6}
                                         type="tel"
                                         name="countryCode"
-                                        value={`+${formData.countryCode.slice(1, 3)}`}
+                                        value={`+91`}
                                         readOnly
                                         required
                                     />

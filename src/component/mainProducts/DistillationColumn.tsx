@@ -14,10 +14,14 @@ const DistillationColumn = () => {
                     />
                     <div className={styles.right}>
                         <h2>Distillation Column</h2><br />
-                        <p>Chemical Reactor is a vessel designed to contain chemical reactions. It is a type of reaction vessel that is designed to control temperature and pressure. The design of a chemical reactor is determined by many factors including the chemical reaction taking place, the type of reactor, the nature of the reactants, and the desired reaction conditions.</p><br />
-                        <h2>Types of Chemical Reactor</h2>
+                        <p>Distillation columns are one of the mostly commonly
+                            used separation unit to separate the mixture into in
+                            component parts, based on the different velocity &
+                            boiling point. It is built from mild steel & stainless steel
+                            materials. Also manufacturing by length and size.</p><br />
+                        <h2>Shell Diameter - Ø 250mm to Ø 1200mm</h2>
+                        <h2>Length - up to 25 MTR</h2>
                         <br />
-                        <p>Chemical Reactor is a vessel designed to contain chemical reactions. It is a type of reaction vessel that is designed to control temperature and pressure. The design of a chemical reactor is determined by many factors including the chemical reaction taking place, the type of reactor, the nature of the reactants, and the desired reaction conditions.</p><br />
                     </div>
                 </div>
             </div>
