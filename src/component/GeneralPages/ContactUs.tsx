@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './ContactUs.module.scss';
 import Link from 'next/link';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
@@ -14,6 +14,8 @@ const ContactUs = () => {
         message: '',
         file: null
     });
+
+const fileInputRef = useRef<HTMLInputElement | null>(null)
 
     const handleCheckEmail: any = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -35,6 +37,7 @@ const ContactUs = () => {
         return true;
     }
     const [file, setFile] = useState<File | null>(null);
+
     const handleChange = (e: any) => {
         const { name, value, files } = e.target;
         if (name === 'mobile' && isNaN(value)) {
@@ -93,7 +96,7 @@ const ContactUs = () => {
 
         // If a file is selected, upload it first
         if (file) {
-            fileUrl = await handleFileUpload(); // Upload file and get the URL
+            fileUrl = await handleFileUpload();
             if (!fileUrl) return; // Stop submission if the file upload fails
         }
 
@@ -117,9 +120,12 @@ const ContactUs = () => {
                     email: '',
                     mobile: '',
                     message: '',
-                    file: ''
+                    file: null
                 });
-                setFile(null); // Reset the file input
+                 setFile(null); // Reset file state
+                if (fileInputRef.current) {
+                    fileInputRef.current.value = ''; // Reset file input element
+                }
             } else {
                 const data = await response.json();
                 showErrorToast(data.message);
@@ -174,9 +180,8 @@ const ContactUs = () => {
                                     />
                                 </div>
                             </div>
-
                             <label>Upload File:</label>
-                            <input type="file" id="file" name="file" onChange={handleChange} />
+                            <input type="file" id="file" name="file" ref={fileInputRef} onChange={handleChange} />
 
                             <label>Message:<span style={{ color: 'red' }}>*</span></label>
                             <textarea id="message" name="message" value={formData.message} onChange={handleChange} required></textarea>
