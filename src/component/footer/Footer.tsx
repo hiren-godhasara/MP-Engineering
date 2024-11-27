@@ -6,10 +6,10 @@ import insta from '../../imageFolder/icons8-linkedin-60.png'
 import fb from '../../imageFolder/icons8-facebook-60.png'
 import wp from '../../imageFolder/icons8-whatsapp-60.png'
 import logo from "../../imageFolder/logo.png";
-const whatsappLink = 'https://wa.me/+919157059719';
-const webSiteLink = 'http://www.mydryfruit.com'
-const faceBookLink = 'https://www.facebook.com/mydryfruit'
-const instagramLink = 'https://instagram.com/mydryfruit_com'
+const whatsappLink = 'https://wa.me/+919724009770';
+const webSiteLink = 'http://www.mpengineering.c.in'
+const faceBookLink = ''
+const instagramLink = ''
 
 
 export default function Footer() {
@@ -32,7 +32,7 @@ export default function Footer() {
                         <span className={styles.ps1}>BITSSHADOW LLP</span>
                     </p> */}
                     <p className={styles.p1} >
-                        517-522 Meridian Business Center, Mota Varachha, Surat, Gujarat 394101
+                     45, Shreenathji Estate, Nr. PNB Bank,Phase-1 Vavtva GIDC, Vatva, Ahmedabad – 382445.                        
                     </p>
                     <div className={styles.p3}>
                         <Link href={instagramLink} target="_blank" rel="noopener noreferrer">

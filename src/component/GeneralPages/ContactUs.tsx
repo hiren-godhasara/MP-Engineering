@@ -139,9 +139,9 @@ const ContactUs = () => {
                         <h1 className={styles.h1}>
                             <Image src={logo} alt="Company logo" fill={true} style={{ objectFit: "contain" }} />
                         </h1>
-                        <p><strong>Address:</strong> 517-522 Meridian Business Center, Mota Varachha, Surat, Gujarat 394101</p>
-                        <p><strong>Email:</strong> <Link href="mailto:mydryfruitinfo@gmail.com">mydryfruitinfo@gmail.com</Link></p>
-                        <p><strong>Mobile:</strong> +91 9157059719</p>
+                        <p><strong>Address:</strong> 45, Shreenathji Estate, Nr. PNB Bank,Phase-1 Vavtva GIDC, Vatva, Ahmedabad – 382445.</p>
+                        <p><strong>Email:</strong> <Link href="mailto:mpengineering2@gmail.com">mpengineering2@gmail.com</Link></p>
+                        <p><strong>Mobile:</strong> +91-97240 09770, +91-98242 52612</p>
                     </div>
                     <div className={styles.rightSection}>
                         <form className={styles.contactForm} onSubmit={handleSubmit}>

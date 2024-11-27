@@ -1,17 +1,12 @@
 'use client'
 import headerCompanyLogo from '../../imageFolder/logo.png';
 import wp from '../../imageFolder/icons8-whatsapp-60.png';
-import fb from '../../imageFolder/icons8-facebook-60.png';
-import ln from '../../imageFolder/icons8-linkedin-60.png';
 
 import styles from './Header.module.scss';
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link';
 import { Drawer } from 'antd';
-import { usePathname, useRouter } from 'next/navigation';
-import axios from 'axios';
-import Loader from '../loader/Loader';
 
 const Header = () => {
 
@@ -58,7 +53,9 @@ const Header = () => {
                     </div>
 
                     <div>
+                        <Link href={'https://wa.me/+919724009770'}>
                         <Image src={wp} width={60} height={60} alt='Home Pagea' />
+                        </Link>
                     </div>
 
                 </div>
@@ -112,7 +109,7 @@ const Header = () => {
                     </Drawer>
                 }
 
-                <div className={`${styles.fullScreenHeader} `}>
+                <div className={`${styles.fullScreenHeader} `} onClick={() => setIsProductsDropdownShown(false)}>
                     <Link href={'/'} >
                         <div className={styles.leftSection}>
                             <Image src={headerCompanyLogo} width={240} height={170} alt='Home Pagea' />
